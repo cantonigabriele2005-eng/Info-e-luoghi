@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Info e luoghi — Segnale</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.4.0/swiper-bundle.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Segnale<span>Festival di design</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="programma.html">Programma</a>
+        <a href="info.html" aria-current="page">Info e luoghi</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenuto" class="container">
+    <section class="intro">
+      <p class="eyebrow">12–13 giugno · Torino · Festival immaginario</p>
+      <h1 id="titolo-info">Info e luoghi</h1>
+      <p class="lead">Dove si svolgono gli appuntamenti e cosa sapere prima di arrivare.</p>
+      <p class="reading-text">Il festival si svolge in tre sedi, ognuna dedicata a un tipo di appuntamento. Qui trovi cosa accade in ciascun luogo, gli orari delle due giornate e alcune indicazioni pratiche.</p>
+      <a class="button-link" href="programma.html">Vai al programma</a>
+    </section>
+
+    <section class="content-section">
+      <h2 id="titolo-fotografie">Le sedi in fotografia</h2>
+      <p class="reading-text">Scorri le fotografie per vedere i tre luoghi del festival, una alla volta.</p>
+      <div class="luoghi-slider">
+        <div class="swiper luoghi-swiper" aria-label="Fotografie delle sedi del festival">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <figure class="luogo">
+                <img src="assets/luoghi/mirafiori.jpg" alt="Grande struttura con travi rosse e vetrate illuminate al tramonto" width="1200" height="675">
+                <figcaption>
+                  <h3>Officina Nord</h3>
+                  <p>Una grande struttura industriale con travature rosse, pensata per incontri e progetti condivisi.</p>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="luogo">
+                <img src="assets/luoghi/sede-centrale.jpg" alt="Edificio chiaro a più piani con alberi spogli davanti" width="1200" height="675">
+                <figcaption>
+                  <h3>Spazio Forma</h3>
+                  <p>Un edificio di linee sobrie, adatto a laboratori e sperimentazioni su materiali e idee.</p>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="luogo">
+                <img src="assets/luoghi/politecnico-valentino.jpg" alt="Cortile con pavimento a ciottoli e facciate storiche al crepuscolo" width="1200" height="675">
+                <figcaption>
+                  <h3>Cortile Comune</h3>
+                  <p>Un ampio cortile storico che ospita mostre e percorsi all'aperto.</p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <button type="button" class="luoghi-btn luoghi-prev" aria-label="Sede precedente"><span aria-hidden="true">&#8249;</span></button>
+          <button type="button" class="luoghi-btn luoghi-next" aria-label="Sede successiva"><span aria-hidden="true">&#8250;</span></button>
+        </div>
+        <div class="luoghi-controls">
+          <div class="swiper-pagination luoghi-pagination"></div>
+        </div>
+      </div>
+      <p class="reading-text luoghi-nota">Le sedi e i loro nomi sono inventati per questa esercitazione.</p>
+    </section>
+
+    <section class="content-section">
+      <h2 id="titolo-mappa">Dove si trovano le sedi</h2>
+      <p class="reading-text">La mappa mostra le tre sedi del festival a Torino. Sotto trovi nomi, indirizzi e i collegamenti per le indicazioni stradali.</p>
+      <div class="mappa-sedi">
+        <iframe
+          title="Mappa uMap con le tre sedi del festival Segnale a Torino"
+          allowfullscreen
+          allow="geolocation"
+          loading="lazy"
+          src="https://umap.openstreetmap.fr/it/map/segnale-sedi-del-festival-immaginario_1479665?scaleControl=false&amp;miniMapControl=false&amp;scrollWheelZoom=false&amp;zoomControl=true&amp;editMode=disabled&amp;moreControl=true&amp;searchControl=null&amp;tilelayersControl=null&amp;embedControl=null&amp;datalayersControl=true&amp;onLoadPanel=none&amp;captionBar=false&amp;captionMenus=true"></iframe>
+        <p><a href="https://umap.openstreetmap.fr/it/map/segnale-sedi-del-festival-immaginario_1479665?scaleControl=false&amp;miniMapControl=false&amp;scrollWheelZoom=true&amp;zoomControl=true&amp;editMode=disabled&amp;moreControl=true&amp;searchControl=null&amp;tilelayersControl=null&amp;embedControl=null&amp;datalayersControl=true&amp;onLoadPanel=none&amp;captionBar=false&amp;captionMenus=true">Visualizza a schermo intero</a></p>
+      </div>
+
+      <ul class="indirizzi-sedi">
+        <li>
+          <h3>Officina Nord</h3>
+          <p>Sede di Mirafiori, Corso Luigi Settembrini 178, Torino<br>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Corso+Luigi+Settembrini+178%2C+Torino">Indicazioni per Officina Nord</a></p>
+        </li>
+        <li>
+          <h3>Spazio Forma</h3>
+          <p>Sede centrale, Corso Duca degli Abruzzi 24, Torino<br>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Corso+Duca+degli+Abruzzi+24%2C+Torino">Indicazioni per Spazio Forma</a></p>
+        </li>
+        <li>
+          <h3>Cortile Comune</h3>
+          <p>Politecnico al Valentino, Viale Mattioli 39, Torino<br>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Viale+Mattioli+39%2C+Torino">Indicazioni per Cortile Comune</a></p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2 id="titolo-sedi">Le tre sedi</h2>
+
+      <h3>Officina Nord</h3>
+      <p class="reading-text">La sede degli incontri e dei progetti condivisi.</p>
+      <ul class="venues">
+        <li>Venerdì 12 giugno · 10:00 · Lettere in movimento</li>
+        <li>Sabato 13 giugno · 10:00 · Oggetti in dialogo</li>
+      </ul>
+
+      <h3>Spazio Forma</h3>
+      <p class="reading-text">La sede dei laboratori e delle sperimentazioni.</p>
+      <ul class="venues">
+        <li>Venerdì 12 giugno · 14:00 · Materia seconda</li>
+        <li>Sabato 13 giugno · 14:00 · Mappe da abitare</li>
+      </ul>
+
+      <h3>Cortile Comune</h3>
+      <p class="reading-text">La sede delle mostre e dei percorsi.</p>
+      <ul class="venues">
+        <li>Venerdì 12 giugno · 17:00 · La città in un manifesto</li>
+        <li>Sabato 13 giugno · 17:00 · Progettare insieme</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2 id="titolo-orari">Orari</h2>
+      <p class="reading-text">In entrambe le giornate gli appuntamenti iniziano alle 10:00, alle 14:00 e alle 17:00. Il venerdì è dedicato a lettere, materiali e immagini; il sabato a oggetti, mappe e progetti condivisi.</p>
+    </section>
+
+    <section class="content-section">
+      <h2 id="titolo-pratico">Informazioni pratiche</h2>
+      <ul class="venues">
+        <li><strong>Ingresso:</strong> libero, fino a esaurimento dei posti.</li>
+        <li><strong>Laboratori:</strong> consigliamo di arrivare qualche minuto prima dell'inizio.</li>
+        <li><strong>Spostamenti:</strong> le tre sedi sono pensate per essere raggiunte a piedi una dopo l'altra.</li>
+        <li><strong>Accessibilità:</strong> gli spazi sono pensati per essere accessibili a tutte le persone.</li>
+      </ul>
+      <p class="reading-text">Festival, sedi ed eventi sono inventati per questa esercitazione. Non rappresentano un evento reale.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p>Segnale · Progetto didattico · Festival immaginario</p></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@14.4.0/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.luoghi-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      loop: false,
+      navigation: {
+        nextEl: '.luoghi-next',
+        prevEl: '.luoghi-prev'
+      },
+      pagination: {
+        el: '.luoghi-pagination',
+        clickable: true
+      },
+      a11y: {
+        prevSlideMessage: 'Sede precedente',
+        nextSlideMessage: 'Sede successiva',
+        paginationBulletMessage: 'Vai alla sede {{index}}'
+      }
+    });
+  </script>
+</body>
+</html>
