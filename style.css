@@ -259,6 +259,15 @@ h3 {
   position: static;
   width: auto;
   --swiper-pagination-color: var(--colore-primario);
+  --swiper-pagination-bullet-inactive-color: #5b6b60;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: 0.875rem;
+  --swiper-pagination-bullet-horizontal-gap: 0.5rem;
+}
+
+.luoghi-controls .swiper-pagination-bullet:focus {
+  outline: 3px solid var(--colore-testo);
+  outline-offset: 3px;
 }
 
 /* Frecce a metà altezza della fotografia (16:9), bianche semitrasparenti. */
@@ -332,21 +341,21 @@ h3 {
   border-radius: 0.75rem;
 }
 
-.indirizzi-sedi {
-  max-width: 54rem;
-  margin: 1.5rem 0 0;
-  padding: 0;
-  list-style: none;
+/* Informazioni nelle slide delle sedi */
+.luogo-info {
+  margin: 1rem 0 0;
 }
 
-.indirizzi-sedi li {
-  margin-bottom: 1.25rem;
+.luogo-info dt {
+  margin-top: 0.75rem;
+  font-weight: bold;
 }
 
-.indirizzi-sedi h3 {
-  margin: 0 0 0.25rem;
+.luogo-info dd {
+  margin: 0.25rem 0 0;
 }
 
-.indirizzi-sedi p {
+.luogo-info ul {
   margin: 0;
+  padding-left: 1.25rem;
 }
