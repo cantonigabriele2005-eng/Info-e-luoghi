@@ -2,12 +2,14 @@
 
 /* Valori condivisi: le regole interessate li richiamano con var(). */
 :root {
-  --colore-primario: #234c78;
-  --colore-primario-scuro: #163454;
-  --colore-sfondo: #f5f2e9;
+  --colore-primario: #245C49;
+  --colore-primario-scuro: #193032;
+  --colore-sfondo: #f7f7f7;
   --colore-testo: #202923;
-  --font-testo: Arial, Helvetica, sans-serif;
-  --font-titoli: Georgia, "Times New Roman", serif;
+  --colore-testo2: #000000;
+  --colore-hover: #ddff2c;
+  --font-testo: "IBM Plex Mono", monospace;
+  --font-titoli: "Boldonse", serif;
 }
 
 * {
@@ -42,6 +44,10 @@ a:focus {
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--colore-sfondo);
   padding: 1.25rem 0;
   border-bottom: 4px solid var(--colore-primario);
 }
@@ -63,12 +69,13 @@ a:focus {
 }
 
 nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-top: 1rem;
 }
 
 nav a {
-  display: inline-block;
-  margin-right: 1rem;
   padding: 0.25rem 0;
 }
 
@@ -127,7 +134,8 @@ h3 {
 }
 
 .button-link:hover {
-  background: var(--colore-primario-scuro);
+  background: var(--colore-hover);
+  color: var(--colore-testo2);
 }
 
 .content-section {
@@ -203,8 +211,9 @@ h3 {
 
 /* Da 600 px: due colonne. */
 @media (min-width: 600px) {
-  .event-grid {
-    grid-template-columns: repeat(2, 1fr);
+  nav {
+    flex-direction: row;
+    gap: 1rem;
   }
 }
 
