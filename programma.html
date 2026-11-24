@@ -9,10 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
   <header class="site-header">
     <div class="container">
+      <p class="meteo-header">
+        <span id="meteo-header">Meteo Torino: caricamento…</span><br>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener">Dati: Open-Meteo, CC BY 4.0</a>
+      </p>
+
       <a class="brand" href="index.html">Segnale<span>Festival di design</span></a>
       <nav>
         <a href="index.html">Home</a>
@@ -21,6 +27,37 @@
       </nav>
     </div>
   </header>
+
+  <script>
+    const URL_METEO = "https://api.open-meteo.com/v1/forecast?latitude=45.0703&longitude=7.6869&current=temperature_2m,wind_speed_10m&timezone=Europe%2FRome";
+    const testoMeteo = document.getElementById("meteo-header");
+
+    async function caricaMeteoHeader() {
+      try {
+        const risposta = await fetch(URL_METEO);
+        if (!risposta.ok) {
+          throw new Error(`Richiesta non riuscita (${risposta.status})`);
+        }
+        const meteo = await risposta.json();
+        const attuale = meteo.current;
+        const unita = meteo.current_units;
+        const ora = new Intl.DateTimeFormat("it-IT", {
+          day: "numeric",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit"
+        }).format(new Date(attuale.time));
+
+        testoMeteo.textContent =
+          `Torino ${attuale.temperature_2m} ${unita.temperature_2m} · vento ${attuale.wind_speed_10m} ${unita.wind_speed_10m} · ${ora}`;
+      } catch (errore) {
+        console.error(errore);
+        testoMeteo.textContent = "Meteo non disponibile";
+      }
+    }
+
+    caricaMeteoHeader();
+  </script>
 
   <main id="contenuto" class="container">
     <section class="intro">
@@ -32,65 +69,114 @@
 
     <section class="content-section">
       <h2 id="titolo-eventi">Gli appuntamenti</h2>
-      <div class="event-grid">
-        <article class="event-card">
-          <img src="assets/lettere-in-movimento.svg" alt="Lettere geometriche disposte su una griglia" width="900" height="600">
-          <div class="event-body">
-            <p class="event-meta">Venerdì 12 giugno · 10:00 · Incontro</p>
-            <h3>Lettere in movimento</h3>
-            <p>Come cambia un messaggio quando cambiano le lettere? Un incontro su tipografia, ritmo e comunicazione visiva.</p>
-            <p class="event-place"><strong>Sede:</strong> Officina Nord</p>
-          </div>
-        </article>
-        <article class="event-card">
-          <img src="assets/materia-seconda.svg" alt="Forme sovrapposte che richiamano campioni di materiali" width="900" height="600">
-          <div class="event-body">
-            <p class="event-meta">Venerdì 12 giugno · 14:00 · Laboratorio</p>
-            <h3>Materia seconda</h3>
-            <p>Un laboratorio per osservare materiali di recupero e immaginare nuovi utilizzi attraverso piccoli esperimenti.</p>
-            <p class="event-place"><strong>Sede:</strong> Spazio Forma</p>
-          </div>
-        </article>
-        <article class="event-card">
-          <img src="assets/citta-manifesto.svg" alt="Rettangoli colorati compongono una città astratta." width="900" height="600">
-          <div class="event-body">
-            <p class="event-meta">Venerdì 12 giugno · 17:00 · Mostra</p>
-            <h3>La città in un manifesto</h3>
-            <p>Una raccolta di manifesti immaginari racconta quartieri, incontri e abitudini della città attraverso forme e colori.</p>
-            <p class="event-place"><strong>Sede:</strong> Cortile Comune</p>
-          </div>
-        </article>
-        <article class="event-card">
-          <img src="assets/oggetti-dialogo.svg" alt="Due forme geometriche si fronteggiano sopra una linea comune." width="900" height="600">
-          <div class="event-body">
-            <p class="event-meta">Sabato 13 giugno · 10:00 · Incontro</p>
-            <h3>Oggetti in dialogo</h3>
-            <p>Designer e artigiani discutono come nascono gli oggetti quotidiani, tra funzione, cura dei dettagli e possibilità di riparazione.</p>
-            <p class="event-place"><strong>Sede:</strong> Officina Nord</p>
-          </div>
-        </article>
-        <article class="event-card">
-          <img src="assets/mappe-abitare.svg" alt="Un percorso collega tre punti su una mappa geometrica." width="900" height="600">
-          <div class="event-body">
-            <p class="event-meta">Sabato 13 giugno · 14:00 · Laboratorio</p>
-            <h3>Mappe da abitare</h3>
-            <p>Disegniamo una mappa fatta di percorsi, punti di incontro e luoghi da riscoprire, partendo dall'esperienza di chi li attraversa.</p>
-            <p class="event-place"><strong>Sede:</strong> Spazio Forma</p>
-          </div>
-        </article>
-        <article class="event-card">
-          <img src="assets/progettare-insieme.svg" alt="Moduli di colori diversi si incastrano in una composizione comune." width="900" height="600">
-          <div class="event-body">
-            <p class="event-meta">Sabato 13 giugno · 17:00 · Mostra</p>
-            <h3>Progettare insieme</h3>
-            <p>Una selezione di progetti collettivi mostra come idee diverse possano diventare un risultato condiviso.</p>
-            <p class="event-place"><strong>Sede:</strong> Cortile Comune</p>
-          </div>
-        </article>
-      </div>
+      <p id="stato-eventi" class="reading-text">Caricamento in corso…</p>
+      <div id="griglia-eventi" class="event-grid"></div>
     </section>
   </main>
 
   <footer class="site-footer"><div class="container"><p>Segnale · Progetto didattico · Festival immaginario</p></div></footer>
+
+  <script>
+    const griglia = document.getElementById("griglia-eventi");
+    const stato = document.getElementById("stato-eventi");
+
+    function mostraStato(testo) {
+      stato.textContent = testo;
+      stato.hidden = false;
+    }
+
+    function nascondiStato() {
+      stato.hidden = true;
+    }
+
+    function maiuscola(testo) {
+      return testo.charAt(0).toUpperCase() + testo.slice(1);
+    }
+
+    // Converte "2026-06-12" in "Venerdì 12 giugno" senza spostamenti di fuso orario.
+    function formattaData(isoData) {
+      const [anno, mese, giorno] = isoData.split("-").map(Number);
+      const data = new Date(Date.UTC(anno, mese - 1, giorno, 12));
+      const testo = new Intl.DateTimeFormat("it-IT", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        timeZone: "UTC"
+      }).format(data);
+      return maiuscola(testo);
+    }
+
+    async function caricaJson(url) {
+      const risposta = await fetch(url);
+      if (!risposta.ok) {
+        throw new Error(`Impossibile leggere ${url} (${risposta.status})`);
+      }
+      return risposta.json();
+    }
+
+    function creaScheda(evento, nomeSede) {
+      const scheda = document.createElement("article");
+      scheda.className = "event-card";
+
+      const immagine = document.createElement("img");
+      immagine.src = evento.immagine;
+      immagine.alt = evento.immagine_alt;
+      immagine.width = 900;
+      immagine.height = 600;
+
+      const corpo = document.createElement("div");
+      corpo.className = "event-body";
+
+      const meta = document.createElement("p");
+      meta.className = "event-meta";
+      meta.textContent = `${formattaData(evento.data)} · ${evento.orario} · ${evento.categoria}`;
+
+      const titolo = document.createElement("h3");
+      titolo.textContent = evento.titolo;
+
+      const descrizione = document.createElement("p");
+      descrizione.textContent = evento.descrizione;
+
+      const sede = document.createElement("p");
+      sede.className = "event-place";
+      const etichetta = document.createElement("strong");
+      etichetta.textContent = "Sede:";
+      sede.append(etichetta, ` ${nomeSede}`);
+
+      corpo.append(meta, titolo, descrizione, sede);
+      scheda.append(immagine, corpo);
+      return scheda;
+    }
+
+    async function init() {
+      mostraStato("Caricamento in corso…");
+      try {
+        const [eventi, sedi] = await Promise.all([
+          caricaJson("dati/eventi.json"),
+          caricaJson("dati/sedi.json")
+        ]);
+
+        if (!Array.isArray(eventi) || eventi.length === 0) {
+          mostraStato("Nessun evento in programma.");
+          return;
+        }
+
+        const nomiSedi = new Map(sedi.map(s => [s.id, s.nome]));
+
+        griglia.replaceChildren(
+          ...eventi.map(e =>
+            creaScheda(e, nomiSedi.get(e.sede_id) ?? "Sede da definire")
+          )
+        );
+        nascondiStato();
+      } catch (errore) {
+        console.error(errore);
+        griglia.replaceChildren();
+        mostraStato("Impossibile caricare il programma. Riprova più tardi.");
+      }
+    }
+
+    init();
+  </script>
 </body>
 </html>

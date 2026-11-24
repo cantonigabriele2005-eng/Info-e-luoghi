@@ -9,10 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
   <header class="site-header">
     <div class="container">
+      <p class="meteo-header">
+        <span id="meteo-header">Meteo Torino: caricamento…</span><br>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener">Dati: Open-Meteo, CC BY 4.0</a>
+      </p>
+
       <a class="brand" href="index.html">Segnale<span>Festival di design</span></a>
       <nav>
         <a href="index.html">Home</a>
@@ -21,6 +27,37 @@
       </nav>
     </div>
   </header>
+
+  <script>
+    const URL_METEO = "https://api.open-meteo.com/v1/forecast?latitude=45.0703&longitude=7.6869&current=temperature_2m,wind_speed_10m&timezone=Europe%2FRome";
+    const testoMeteo = document.getElementById("meteo-header");
+
+    async function caricaMeteoHeader() {
+      try {
+        const risposta = await fetch(URL_METEO);
+        if (!risposta.ok) {
+          throw new Error(`Richiesta non riuscita (${risposta.status})`);
+        }
+        const meteo = await risposta.json();
+        const attuale = meteo.current;
+        const unita = meteo.current_units;
+        const ora = new Intl.DateTimeFormat("it-IT", {
+          day: "numeric",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit"
+        }).format(new Date(attuale.time));
+
+        testoMeteo.textContent =
+          `Torino ${attuale.temperature_2m} ${unita.temperature_2m} · vento ${attuale.wind_speed_10m} ${unita.wind_speed_10m} · ${ora}`;
+      } catch (errore) {
+        console.error(errore);
+        testoMeteo.textContent = "Meteo non disponibile";
+      }
+    }
+
+    caricaMeteoHeader();
+  </script>
 
   <main id="contenuto" class="container">
     <section class="intro">

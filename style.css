@@ -51,7 +51,21 @@ a:focus {
   padding: 1.25rem 0;
   border-bottom: 4px solid var(--colore-primario);
 }
+.site-header {
+  position: relative;
+}
 
+.meteo-header {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  margin: 0;
+  font-family: var(--font-testo);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: right;
+  color: #46564b;
+}
 .brand {
   display: inline-block;
   color: var(--colore-testo);
